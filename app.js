@@ -36,7 +36,7 @@ app.get("/players/", async (request, response) => {
 app.post("/players/", async (request, response) => {
   const playerDetails = request.body;
   const { player_id, player_name, jersey_number, role } = playerDetails;
-  const addPlayerDetailsQuery = `Insert into cricket_team(playerName, jerseyNumber, role) 
+  const addPlayerDetailsQuery = `Insert into cricket_team(player_name, jersey_number, role) 
     values ("Vishal", 17, "Bowler");`;
 
   const dbResponse = await db.run(addPlayerDetailsQuery);
@@ -56,9 +56,10 @@ app.put("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
   const playerDetails = request.body;
   const { player_id, player_name, jersey_number, role } = playerDetails;
-  const updatePlayerQuery = `update cricket_team set
-    playerName= "Maneesh",
-    jerseyNumber: 54,
+  const updatePlayerQuery = `update cricket_team 
+  set
+    player_name= "Maneesh",
+    jersey_number: 54,
     role: "All-rounder" 
     where player_id = ${playerId};`;
   await db.run(updatePlayerQuery);
@@ -74,5 +75,4 @@ app.delete("/players/:playerId/", async (request, response) => {
   response.send("Player Removed");
 });
 
-app.listen(3093);
 module.exports = app;

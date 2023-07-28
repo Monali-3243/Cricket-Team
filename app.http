@@ -1,1 +1,33 @@
-GET http://localhost:3093/playersṣ
+GET http://localhost:3093/players/
+
+###
+
+POST http://localhost:3093/players/
+Content-Type: application/json
+
+{
+  "player_name": "Vishal",
+  "jersey_number": 17,
+  "role": "Bowler"
+}
+
+
+###
+
+GET http://localhost:3093/players/:5/
+
+###
+
+PUT http://localhost:3093/players/:5/
+Content-Type: application/json
+
+{
+  "player_name": "Maneesh",
+  "jersey_number": 54,
+  "role": "All-rounder"
+}
+
+###
+
+DELETE http://localhost:3093/players/:6/
+
